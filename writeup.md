@@ -39,6 +39,7 @@ min <sub>&delta;<sub>t</sub>, a<sub>t</sub></sub>  &sum;<sub>t</sub><sup>N</sup>
 </script>
 $$\sum_{k=1}^Nk(N-k+1)$$
 
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
 
 ## Model Predictive Control with Latency
 
