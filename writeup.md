@@ -32,14 +32,9 @@ where
 
 The values of <i>&delta;<sub>t</sub></i> and <i>a<sub>t</sub></i> are found by solving the following optimization problem:
 
-min <sub>&delta;<sub>t</sub>, a<sub>t</sub></sub>  &sum;<sub>t</sub><sup>N</sup>
+min <sub>&delta;<sub>t</sub>, a<sub>t</sub></sub>  &sum;<sub>t=0,1,...,N-2</sub> ( C<sub>cte</sub>&bullet;(cte<sub>t</sub>)<sup>2</sup> + C<sub>e&psi;</sub>&bullet;(e&psi;<sub>t</sub>)<sup>2</sup> + C<sub>v</sub>&bullet;(v<sub>t</sub> - v<sub>target</sub>)<sup>2</sup>) + &sum;<sub>t=0,1,...,N-2</sub> (C<sub>&delta;</sub>&bullet;(&delta;<sub>t</sub>)<sup>2</sup>+C<sub>a</sub>&bullet;(a<sub>t</sub>)<sup>2</sup>) + &sum;<sub>t=0,1,...,N-3</sub>  (C<sub>delta_diff</sub>&bullet;(&delta;<sub>t+1</sub>-&delta;<sub>t</sub>)<sup>2</sup>+C<sub>a_diff</sub>&bullet;(a<sub>t+1</sub>-a<sub>t</sub>)<sup>2</sup>) + &sum;<sub>t=0,1,...,N-2</sub> C<sub>slowdown</sub>&bullet;((cte<sub>t</sub>&bullet;a<sub>t</sub>)<sup>2</sup>+(e&psi;<sub>t</sub>&bullet;a<sub>t</sub>)<sup>2</sup>) 
 
-<script src=
-"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-$$\sum_{k=1}^Nk(N-k+1)$$
 
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
 
 ## Model Predictive Control with Latency
 
