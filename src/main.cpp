@@ -144,7 +144,7 @@ int main(int argc, char* argv[]) {
           auto coeffs = polyfit(ptsx_car, ptsy_car, 2); //3
 
           // compute cross-track error (cte)
-          double cte = polyeval(coeffs,0);   // TBD: compute CTE in a more exact way
+          double cte = polyeval(coeffs,0);   // this is an approximate computation
 
           // compute error in psi (epsi)
           double epsi = -atan(coeffs[1]);
