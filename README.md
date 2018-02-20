@@ -1,4 +1,4 @@
-# CarND-Controls-MPC
+# MPC Controller
 Project 5 of term 2 of Udacity self-driving car nanodegree
 
 ## Setup

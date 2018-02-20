@@ -13,7 +13,7 @@ class FG_eval {
   public:
     typedef CPPAD_TESTVECTOR(AD<double>) ADvector;
     FG_eval(unsigned int N_, float dt_, float C_cte_, float C_epsi_, float C_v_, 
-            float C_delta_, float C_a_, float C_delta_diff_, float C_a_diff_, float C_corner_);
+            float C_delta_, float C_a_, float C_delta_diff_, float C_a_diff_, float C_slowdown_);
     void set_coeffs(Eigen::VectorXd coeffs_) { coeffs = coeffs_; }
     void set_indices(size_t x_start, size_t y_start, size_t psi_start, size_t v_start, size_t cte_start, size_t epsi_start,
                      size_t delta_start, size_t a_start);
@@ -33,7 +33,7 @@ class FG_eval {
      float C_a;
      float C_delta_diff;
      float C_a_diff;
-     float C_corner;
+     float C_slowdown;
      float curr_delta;
      float curr_a;
 

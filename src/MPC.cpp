@@ -29,9 +29,9 @@ const double desired_speed = 100;
 //
 
 FG_eval::FG_eval(unsigned int N_, float dt_, float C_cte_, float C_epsi_, float C_v_, 
-                 float C_delta_, float C_a_, float C_delta_diff_, float C_a_diff_, float C_corner_) :
+                 float C_delta_, float C_a_, float C_delta_diff_, float C_a_diff_, float C_slowdown_) :
                  N(N_), dt(dt_), C_cte(C_cte_), C_epsi(C_epsi_), C_v(C_v_), C_delta(C_delta_), C_a(C_a_),
-                 C_delta_diff(C_delta_diff_), C_a_diff(C_a_diff_), C_corner (C_corner_), curr_delta(0), curr_a(0)
+                 C_delta_diff(C_delta_diff_), C_a_diff(C_a_diff_), C_slowdown (C_slowdown_), curr_delta(0), curr_a(0)
 {
 }
 
@@ -79,8 +79,8 @@ void FG_eval::operator()(ADvector& fg, const ADvector& vars) {
 
     // Penalize acceleration when the car is in dangerous area (cte or epsi are large)
     for (int t = 0; t < N - 1; t++) {
-      fg[0] += C_corner * CppAD::pow(vars[epsi_start + t],2) * CppAD::pow(vars[a_start + t],2);
-      fg[0] += C_corner * CppAD::pow(vars[cte_start + t],2) * CppAD::pow(vars[a_start + t],2);
+      fg[0] += C_slowdown * CppAD::pow(vars[epsi_start + t],2) * CppAD::pow(vars[a_start + t],2);
+      fg[0] += C_slowdown * CppAD::pow(vars[cte_start + t],2) * CppAD::pow(vars[a_start + t],2);
     }
 
     // Minimize the value gap between sequential actuations.
@@ -172,8 +172,8 @@ void FG_eval::operator()(ADvector& fg, const ADvector& vars) {
 // MPC class implementation.
 //
 MPC::MPC(unsigned int N_, float dt_, float C_cte_, float C_epsi_, float C_v_, 
-         float C_delta_, float C_a_, float C_delta_diff_, float C_a_diff_, float C_corner_) : 
-         N(N_), fg_eval(N_, dt_, C_cte_, C_epsi_, C_v_, C_delta_, C_a_, C_delta_diff_, C_a_diff_, C_corner_) 
+         float C_delta_, float C_a_, float C_delta_diff_, float C_a_diff_, float C_slowdown_) : 
+         N(N_), fg_eval(N_, dt_, C_cte_, C_epsi_, C_v_, C_delta_, C_a_, C_delta_diff_, C_a_diff_, C_slowdown_) 
 {
     // The solver takes all the state variables and actuator
     // variables in a singular vector. Thus, we should to establish
@@ -239,6 +239,8 @@ MPC::MPC(unsigned int N_, float dt_, float C_cte_, float C_epsi_, float C_v_,
 
 MPC::~MPC() {}
 
+ // Solve the model given an initial state and polynomial coefficients.
+ // Return the first actuations.
 vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
   bool ok = true;
   

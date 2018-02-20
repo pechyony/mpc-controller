@@ -80,7 +80,7 @@ int main(int argc, char* argv[]) {
   float C_a = 100;
   float C_delta_diff = 200;
   float C_a_diff = 10;
-  float C_corner = 500;
+  float C_slowdown = 500;
 
   if (argc == 11) {
     N = stoi(argv[1]);
@@ -92,11 +92,11 @@ int main(int argc, char* argv[]) {
     C_a = stof(argv[7]);
     C_delta_diff = stof(argv[8]);
     C_a_diff = stof(argv[9]);
-    C_corner = stof(argv[10]);
+    C_slowdown = stof(argv[10]);
   }
 
   // MPC is initialized here!
-  MPC mpc(N, dt, C_cte, C_epsi, C_v, C_delta, C_a, C_delta_diff, C_a_diff, C_corner);
+  MPC mpc(N, dt, C_cte, C_epsi, C_v, C_delta, C_a, C_delta_diff, C_a_diff, C_slowdown);
   int n = 1;
   float ave = 0;
   std::chrono::steady_clock::time_point prev_time = std::chrono::steady_clock::now();
