@@ -14,7 +14,7 @@ where
 * x<sub>t</sub> and y<sub>t</sub> are car coordinates at time t 
 * &psi;<sub>t</sub> is a direction of velocity at time t  
 * v<sub>t</sub> is a velocity at time t  
-* cte<sub>t</sub> is a cross-track error at time t, defined as the distance between the desired position (x, f(x)) and the actual position (x<sub>t</sub>, y<sub>t</sub>) of the car. In our code we approximated cte<sub>t</sub> by f(x<sub>t</sub>) - y<sub>t</sub>  
+* cte<sub>t</sub> is a cross-track error at time t, defined as the distance between the desired position (x, f(x)) and the actual position (x<sub>t</sub>, y<sub>t</sub>) of the car. In our code we approximated cte<sub>t</sub> by f(x<sub>t</sub>) - y<sub>t</sub>. The value of f(x) is obtained by fitting a polynomial to the input waypoints, as described [here](#polynomial-fitting-and-mpc-processing).     
 * e&psi;<sub>t</sub> is an error of the velocity direction at time t, defined as &psi;<sub>t</sub> - arctan(f'(x<sub>t</sub>)).
  
 The state vector s<sub>t+1</sub> at time t+1 is predicted from the state vector at time t using the following equations:
