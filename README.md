@@ -1,5 +1,8 @@
 # MPC Controller
-Project 5 of term 2 of Udacity self-driving car nanodegree
+Project 5 of term 2 of Udacity self-driving car nanodegree.
+[![simulator test test](images/test_screenshot.png)](https://www.youtube.com/watch?v=6tQiZGFnglw)  
+
+Description of our implementation is available [here](writeup.md).
 
 ## Setup
 
